@@ -26,6 +26,7 @@ function getRecipesFromStorage() {
 	//           be no more than a few lines.
 	const recipes = localStorage.getItem('recipes');
 	return recipes ? JSON.parse(recipes) : [];
+
 }
 
 /**
@@ -59,7 +60,7 @@ function saveRecipesToStorage(recipes) {
 	// B1. TODO: - Complete the functionality as described in this function
 	//            header. It is possible in only a single line, but should
 	//            be no more than a few lines.
-	localStorage.setItem('recipes', recipes.toString());
+	localStorage.setItem('recipes', JSON.stringify(recipes));
 }
 
 /**
@@ -98,8 +99,12 @@ function initFormHandler() {
 		// B9. TODO - Get the recipes array from localStorage, add this new recipe to it, and
 		//            then save the recipes array back to localStorage
 		let currRecipes = getRecipesFromStorage();
+		console.log(currRecipes);
+
 		currRecipes.push(newRecipe);
 		saveRecipesToStorage(currRecipes);
+		console.log(currRecipes);
+
 	});
 
 	
@@ -111,6 +116,12 @@ function initFormHandler() {
 		console.log("clicked clear");
 		// Steps B12 & B13 will occur inside the event listener from step B11
 		// B12. TODO - Clear the local storage
+		localStorage.clear();
 		// B13. TODO - Delete the contents of <main>
+		const mainEl = document.querySelector("main");
+		//Loop from https://developer.mozilla.org/en-US/docs/Web/API/Node/removeChild
+		while (mainEl.firstChild) {
+			mainEl.removeChild(mainEl.firstChild);
+		}
 	});
 }

@@ -73,8 +73,9 @@ function initFormHandler() {
 	// B3. TODO - Add an event listener for the 'submit' event, which fires when the
 	//            submit button is clicked
 	const buttonSubmit = document.querySelector("button");
-	buttonSubmit.addEventListener("click", function(){
+	buttonSubmit.addEventListener("click", function(e){
 		console.log("adding a recipe!");
+		e.preventDefault();
 		// Steps B4-B9 will occur inside the event listener from step B3
 		// B4. TODO - Create a new FormData object from the <form> element reference above
 		const formData = new FormData(formEl);
@@ -101,7 +102,7 @@ function initFormHandler() {
 		let currRecipes = getRecipesFromStorage();
 		console.log(currRecipes);
 
-		currRecipes.push(newRecipe);
+		currRecipes.push(recipeObject);
 		saveRecipesToStorage(currRecipes);
 		console.log(currRecipes);
 

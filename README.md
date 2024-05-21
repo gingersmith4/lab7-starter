@@ -1,4 +1,4 @@
 # Lab 7
 
-Ginger Smith
-Milana Gorobchenko
+* Ginger Smith
+* Milana Gorobchenko
